@@ -184,7 +184,7 @@ message DialogStateSnapshot {
     int64 last_owner_read_date = 8 [(scalapb.field).type = "java.time.Instant"];
     int64 last_read_date = 4 [(scalapb.field).type = "java.time.Instant"];
     int32 counter = 5;
-    map<int64, int64> unread_messages = 6;
+    repeated int64 unread_messages = 6;
 }
 
 message DialogRootEnvelope {

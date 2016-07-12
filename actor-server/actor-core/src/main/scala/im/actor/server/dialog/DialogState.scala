@@ -20,17 +20,6 @@ trait DialogQuery {
   def getDest: Peer
 }
 
-private object UnreadMessage {
-  val OrderingAsc = new Ordering[UnreadMessage] {
-    override def compare(x: UnreadMessage, y: UnreadMessage): Int =
-      if (x.date.isBefore(y.date)) -1
-      else if (x.date.isAfter(y.date)) 1
-      else 0
-  }
-}
-
-private case class UnreadMessage(date: Instant, randomId: Long)
-
 private[dialog] object DialogState {
   def initial(userId: Int) = DialogState(
     userId = userId,
@@ -40,8 +29,7 @@ private[dialog] object DialogState {
     lastOwnerReadDate = Instant.ofEpochMilli(0),
     lastReadDate = Instant.ofEpochMilli(0),
     counter = 0,
-    unreadMessages = SortedSet.empty(UnreadMessage.OrderingAsc),
-    unreadMessagesMap = Map.empty
+    unreadMessages = SortedSet.empty
   )
 }
 
@@ -53,8 +41,7 @@ private[dialog] final case class DialogState(
   lastOwnerReadDate:    Instant,
   lastReadDate:         Instant,
   counter:              Int,
-  unreadMessages:       SortedSet[UnreadMessage],
-  unreadMessagesMap:    Map[Long, Long]
+  unreadMessages:       SortedSet[Long] // unread dates. duplicate dates will not count! maybe we should use list and sort it manually?
 ) extends ProcessorState[DialogState] {
   import DialogEvents._
 
@@ -65,23 +52,21 @@ private[dialog] final case class DialogState(
       if (senderUserId != userId) {
         this.copy(
           counter = counter + 1,
-          unreadMessages = unreadMessages + UnreadMessage(date, randomId),
-          unreadMessagesMap = unreadMessagesMap + (randomId → date.toEpochMilli),
+          unreadMessages = unreadMessages + date.toEpochMilli,
           lastMessageDate = date
         )
       } else this.copy(lastMessageDate = date)
     case MessagesRead(date, readerUserId) if readerUserId == userId ⇒
+      val dateMillis = date.toEpochMilli
       log.debug(s"unreadMessages (fromState) ${unreadMessages}")
-      val readMessages = unreadMessages.takeWhile(um ⇒ um.date.isBefore(date) || um.date == date)
+      val readMessages = unreadMessages.takeWhile(messDate ⇒ messDate <= dateMillis)
       log.debug(s"readMessages ${readMessages}")
-      log.debug(s"readMessages date ${unreadMessages.headOption map (um ⇒ um.date.isBefore(date) || um.date == date)}")
+      //      log.debug(s"readMessages date ${unreadMessages.headOption map (um ⇒ um.date.isBefore(date) || um.date == date)}")
       val newUnreadMessages = unreadMessages.drop(readMessages.size)
-      val newUnreadMessagesMap = unreadMessagesMap -- readMessages.map(_.randomId)
 
       this.copy(
         counter = newUnreadMessages.size,
         unreadMessages = newUnreadMessages,
-        unreadMessagesMap = newUnreadMessagesMap,
         lastOwnerReadDate = date
       )
     case MessagesRead(date, readerUserId) if readerUserId != userId ⇒
@@ -109,12 +94,7 @@ private[dialog] final case class DialogState(
         lastOwnerReadDate = s.lastOwnerReadDate,
         lastReadDate = s.lastReadDate,
         counter = s.counter,
-        unreadMessages = SortedSet(
-          (s.unreadMessages.toSeq map {
-            case (randomId, ts) ⇒ UnreadMessage(Instant.ofEpochMilli(ts), randomId)
-          }): _*
-        )(UnreadMessage.OrderingAsc),
-        unreadMessagesMap = s.unreadMessages
+        unreadMessages = SortedSet(s.unreadMessages: _*)
       )
   }
 
@@ -126,12 +106,13 @@ private[dialog] final case class DialogState(
     lastOwnerReadDate = lastOwnerReadDate,
     lastReadDate = lastReadDate,
     counter = counter,
-    unreadMessages = unreadMessagesMap
+    unreadMessages = unreadMessages.toSeq
   )
 
-  private[dialog] def nextDate: Instant = {
-    val now = Instant.now()
-    if (unreadMessages.lastOption.exists(_.date == now)) now.plusMillis(1L)
+  // we can remove this step completely, if we use Vector[Int] for unreadMessages
+  private[dialog] def nextDate: Long = {
+    val now = Instant.now.toEpochMilli
+    if (unreadMessages.lastOption.contains(now)) now + 1L
     else now
   }
 }

@@ -51,6 +51,7 @@ private[group] trait GroupCommandHandlers extends GroupsImplicits with UserAcl {
       } map (_.flatten)
 
       // send invites to all users, that creator can invite
+      // we make it async. this may lead to problems, when not all invites are applied
       for {
         userIds ← resolvedUserIds
         _ = userIds foreach (u ⇒ context.parent !

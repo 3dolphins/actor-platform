@@ -228,7 +228,7 @@ trait DialogCommandHandlers extends PeersImplicits with UserAcl {
    * @return unique message date in current dialog
    */
   private def calcSendDate(): Long = {
-    val candidate = state.nextDate.toEpochMilli
+    val candidate = state.nextDate // don't we do it twice?
     if (state.lastMessageDate.toEpochMilli == candidate) state.lastMessageDate.toEpochMilli + 1
     else candidate
   }
