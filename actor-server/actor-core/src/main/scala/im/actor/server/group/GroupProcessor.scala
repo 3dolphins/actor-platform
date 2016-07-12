@@ -7,7 +7,7 @@ import akka.cluster.sharding.ShardRegion
 import akka.http.scaladsl.util.FastFuture
 import im.actor.api.rpc.peers.{ ApiPeer, ApiPeerType }
 import im.actor.serialization.ActorSerializer
-import im.actor.server.cqrs.{ Processor, TaggedEvent }
+import im.actor.server.cqrs.{ IncrementalSnapshots, Processor, TaggedEvent }
 import im.actor.server.db.DbExtension
 import im.actor.server.dialog.{ DialogEnvelope, DialogExtension }
 import im.actor.server.group.GroupErrors.{ GroupIdAlreadyExists, GroupNotFound }
@@ -82,9 +82,9 @@ object GroupProcessor {
   private[group] def props: Props = Props(classOf[GroupProcessor])
 }
 
-//FIXME: snapshots!!!
 private[group] final class GroupProcessor
   extends Processor[GroupState]
+  with IncrementalSnapshots[GroupState]
   with GroupCommandHandlers
   with GroupQueryHandlers {
 
@@ -135,7 +135,6 @@ private[group] final class GroupProcessor
 
   }
 
-  // TODO: add backoff
   private def groupPeerActor: ActorRef = {
     val groupPeer = "GroupPeer"
     context.child(groupPeer).getOrElse(context.actorOf(GroupPeer.props(groupId), groupPeer))
