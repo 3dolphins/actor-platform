@@ -29,7 +29,7 @@ final class ActivationContext(implicit system: ActorSystem) extends CodeGen {
   private val MaxCacheSize = 1000L
   private implicit val codesCache = createCache[String, Code](MaxCacheSize)
 
-  // Ignore this comment
+  // Ignore this comment again
 
   /**
    * We don't care about result of sending internal code.
