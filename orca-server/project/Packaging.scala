@@ -6,6 +6,7 @@ import com.typesafe.sbt.packager.linux.LinuxPlugin.autoImport.packageMapping
 import sbt.Keys._
 import sbt._
 
+//Packaging puspose
 private[actor] trait Packaging {
   lazy val packagingSettings = Seq(
     scriptClasspath := Seq("*"),
