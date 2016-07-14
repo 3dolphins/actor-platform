@@ -86,7 +86,7 @@ object Build extends sbt.Build with Versioning with Releasing with Packaging {
       )
 
   lazy val root = Project(
-    "actor",
+    "orca",
     file("."),
     settings =
       packagingSettings ++
