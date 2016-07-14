@@ -15,5 +15,5 @@ sourceSets {
 }
 
 dependencies {
-    compile project(':actor-sdk:sdk-core:runtime:runtime-cocoa')
+    compile project(':orca-sdk:sdk-core:runtime:runtime-cocoa')
 }

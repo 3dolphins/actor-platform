@@ -6,7 +6,9 @@ buildscript {
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
     }
 }
-
+plugins {
+    id "me.tatarka.retrolambda" version "3.2.5"
+}
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 apply plugin: 'signing'
@@ -31,7 +33,7 @@ android {
             minifyEnabled false
         }
     }
-    
+
     lintOptions {
         abortOnError false
     }
@@ -46,9 +48,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
 
     //compile 'im.actor:android-sdk:0.1.30'
-    compile project(':actor-sdk:sdk-core-android:android-sdk')
+    compile project(':orca-sdk:sdk-core-android:android-sdk')
 
-    compile 'com.google.android.gms:play-services-gcm:8.4.0'
+    compile 'com.google.android.gms:play-services-maps:8.4.0'
+
 }
 
 //

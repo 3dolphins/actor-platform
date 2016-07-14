@@ -38,9 +38,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':actor-sdk:sdk-core-android:android-sdk')
-    compile project(':actor-sdk:sdk-core-android:android-google-push')
-    compile project(':actor-sdk:sdk-core-android:android-google-maps')
+    compile project(':orca-sdk:sdk-core-android:android-sdk')
+    compile project(':orca-sdk:sdk-core-android:android-google-push')
+    compile project(':orca-sdk:sdk-core-android:android-google-maps')
 
     compile 'com.roughike:bottom-bar:1.3.9'
 }
