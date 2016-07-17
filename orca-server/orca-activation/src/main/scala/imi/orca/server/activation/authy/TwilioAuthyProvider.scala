@@ -12,7 +12,6 @@ import imi.orca.server.sms.{TwilioAuthyClient, TwilioAuthySmsEngine}
 
 import scala.concurrent.Future
 
-
 final class TwilioAuthyProvider(implicit system: ActorSystem) extends ActivationProvider  {
   protected val db = DbExtension(system).db
   protected implicit val ec = system.dispatcher
