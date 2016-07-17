@@ -1,11 +1,11 @@
 package im.actor.server
 
 import akka.actor._
-import com.typesafe.config.{ ConfigException, ConfigObject, Config }
+import com.typesafe.config.{Config, ConfigException, ConfigObject}
 import im.actor.server.api.rpc.RpcApiExtension
 
 import scala.collection.JavaConversions._
-import scala.util.{ Failure, Success, Try }
+import scala.util.{Failure, Success, Try}
 
 object ActorServerModules extends ExtensionId[ActorServerModules] with ExtensionIdProvider {
   override def createExtension(system: ExtendedActorSystem): ActorServerModules = new ActorServerModules(system)

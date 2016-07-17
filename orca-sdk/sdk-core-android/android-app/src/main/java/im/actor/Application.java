@@ -32,7 +32,7 @@ public class Application extends ActorSDKApplication {
     @Override
     public void onConfigureActorSDK() {
         ActorSDK.sharedActor().setDelegate(new ActorSDKDelegate());
-        ActorSDK.sharedActor().setPushId(209133700967L);
+        //ActorSDK.sharedActor().setPushId(209133700967L);
 
         ActorStyle style = ActorSDK.sharedActor().style;
         style.setDialogsActiveTextColor(0xff5882ac);
@@ -46,7 +46,7 @@ public class Application extends ActorSDKApplication {
         ActorSDK.sharedActor().setPrivacyText("bla bla bla");
 
         ActorSDK.sharedActor().setVideoCallsEnabled(true);
-
+        ActorSDK.sharedActor().setEndpoints(new String[]{"tcp://192.168.0.111:10070"});
 
 //        ActorSDK.sharedActor().setTwitter("");
 //        ActorSDK.sharedActor().setHomePage("http://www.foo.com");

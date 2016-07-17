@@ -1,13 +1,12 @@
 package im.actor
 
-import sbt.Keys._
-import sbt._
-import spray.revolver.RevolverPlugin._
 import com.trueaccord.scalapb.{ScalaPbPlugin => PB}
-import com.typesafe.sbt.SbtMultiJvm
 import com.typesafe.sbt.SbtMultiJvm.MultiJvmKeys.MultiJvm
 import com.typesafe.sbt.packager.archetypes.JavaServerAppPackaging
 import com.typesafe.sbt.packager.debian.JDebPackaging
+import sbt.Keys._
+import sbt._
+import spray.revolver.RevolverPlugin._
 
 object Build extends sbt.Build with Versioning with Releasing with Packaging {
   val ScalaVersion = "2.11.8"
@@ -94,9 +93,9 @@ object Build extends sbt.Build with Versioning with Releasing with Packaging {
       Revolver.settings ++
       Seq(
         libraryDependencies ++= Dependencies.root,
-        //Revolver.reStartArgs := Seq("im.actor.server.Main"),
-        mainClass in Revolver.reStart := Some("im.actor.server.Main"),
-        mainClass in Compile := Some("im.actor.server.Main"),
+        //Revolver.reStartArgs := Seq("imi.orca.server.Main"),
+        mainClass in Revolver.reStart := Some("imi.orca.server.Main"),
+        mainClass in Compile := Some("imi.orca.server.Main"),
         autoCompilerPlugins := true,
         scalacOptions in(Compile, doc) ++= Seq(
           "-Ywarn-unused-import",
@@ -341,6 +340,7 @@ object Build extends sbt.Build with Versioning with Releasing with Packaging {
   )
     .dependsOn(
     actorActivation,
+    orcaActivation,
     actorBots,
     actorCli,
     actorEnrich,
@@ -352,6 +352,7 @@ object Build extends sbt.Build with Versioning with Releasing with Packaging {
     actorRpcApi
   ).aggregate(
     actorActivation,
+    orcaActivation,
     actorBots,
     actorCli,
     actorCodecs,
@@ -362,14 +363,17 @@ object Build extends sbt.Build with Versioning with Releasing with Packaging {
     actorFrontend,
     actorHttpApi,
     actorModels,
+    orcaModels,
     actorNotify,
     actorOAuth,
     actorPersist,
+    orcaPersist,
     actorRpcApi,
     actorRuntime,
     actorSession,
     actorSessionMessages,
-    actorSms
+    actorSms,
+    orcaSms
   )
 
   lazy val actorTests = Project(
@@ -408,4 +412,37 @@ object Build extends sbt.Build with Versioning with Releasing with Packaging {
       actorRpcApi,
       actorSession
     )
+
+  /* ========================== Orca Module ============================= */
+  lazy val orcaSms = Project(
+    id = "orca-sms",
+    base = file("orca-sms"),
+    settings = defaultSettingsServer ++ Seq(libraryDependencies ++= Dependencies.sms)
+  ).dependsOn(actorSms, actorRuntime)
+
+  lazy val orcaModels = Project(
+    id = "orca-models",
+    base = file("orca-models"),
+    settings = defaultSettingsServer ++ Seq(
+      libraryDependencies ++= Dependencies.models
+    )
+  ).dependsOn(actorModels)
+
+  lazy val orcaPersist = Project(
+    id = "orca-persist",
+    base = file("orca-persist"),
+    settings = defaultSettingsServer ++ Seq(
+      libraryDependencies ++= Dependencies.persist
+    )
+  ).dependsOn(actorPersist, orcaModels)
+
+  lazy val orcaActivation = Project(
+    id = "orca-activation",
+    base = file("orca-activation"),
+    settings = defaultSettingsServer ++ Seq(
+      libraryDependencies ++= Dependencies.activation,
+      scalacOptions in Compile := (scalacOptions in Compile).value.filterNot(_ == "-Ywarn-unused-import")
+    )
+  ).dependsOn(actorActivation, orcaPersist, orcaSms)
+
 }
