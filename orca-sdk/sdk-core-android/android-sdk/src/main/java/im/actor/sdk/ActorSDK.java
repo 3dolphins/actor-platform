@@ -110,7 +110,7 @@ public class ActorSDK {
     /**
      * Actor App Name
      */
-    private String appName = "Actor";
+    private String appName = "Orca Messenger";
     /**
      * Push Registration Id
      */
@@ -118,7 +118,7 @@ public class ActorSDK {
     /**
      * Actor Push Endpoint
      */
-    private String actorPushEndpoint = "https://push.actor.im/apps/31337/subscriptions";
+    private String actorPushEndpoint = "";
     /**
      * Is Keeping app alive enabled
      */
@@ -131,19 +131,19 @@ public class ActorSDK {
     /**
      * Invite url
      */
-    private String inviteUrl = "https://actor.im/dl";
+    private String inviteUrl = "https://orca.im/dl";
     /**
      * Help phone
      */
-    private String helpPhone = "75551234567";
+    private String helpPhone = "";
     /**
      * Home page
      */
-    private String homePage = "https://actor.im";
+    private String homePage = "https://orca.im";
     /**
      * Twitter
      */
-    private String twitter = "actorapp";
+    private String twitter = "InMInnovation";
 
     /**
      * Terms of service
@@ -184,12 +184,6 @@ public class ActorSDK {
 
     private ActorSDK() {
         endpoints = new String[]{
-                "tls://front1-mtproto-api-rev2.actor.im@104.155.30.208",
-                "tls://front2-mtproto-api-rev2.actor.im@104.155.30.208",
-
-                "tcp://front1-mtproto-api-rev3.actor.im@104.155.30.208:443",
-                "tcp://front2-mtproto-api-rev3.actor.im@104.155.30.208:443",
-                "tcp://front3-mtproto-api-rev3.actor.im@104.155.30.208:443"
         };
         trustedKeys = new String[]{
                 "d9d34ed487bd5b434eda2ef2c283db587c3ae7fb88405c3834d9d1a6d247145b",

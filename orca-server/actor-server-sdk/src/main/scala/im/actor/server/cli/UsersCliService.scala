@@ -1,6 +1,6 @@
 package im.actor.server.cli
 
-import akka.actor.{Actor, ActorLogging, Props}
+import akka.actor.{ Actor, ActorLogging, Props }
 import akka.cluster.client.ClusterClientReceptionist
 import akka.pattern.pipe
 import im.actor.server.user.UserExtension

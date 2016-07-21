@@ -37,19 +37,19 @@ public class SmilePagerAdapter extends PagerAdapter implements PagerSlidingTabSt
 
     public SmilePagerAdapter(EmojiKeyboard emojiKeyboard) {
         this.emojiKeyboard = emojiKeyboard;
-//        count = messenger().getOwnStickerPacks().getValuesMap().values().size();
-//        if (emojiKeyboard.getActivity() instanceof BaseActivity) {
-//            messenger().getOwnStickerPacks().addCallback(new MVVMCollection.OnChangedListener() {
-//                @Override
-//                public void onChanged() {
-//                    count = messenger().getOwnStickerPacks().getValuesMap().values().size();
-//                    if (tabs != null) {
-//                        tabs.notifyDataSetChanged();
-//                    }
-//                    notifyDataSetChanged();
-//                }
-//            });
-//        }
+        /*count = messenger().getOwnStickerPacks().getValuesMap().values().size();
+        if (emojiKeyboard.getActivity() instanceof BaseActivity) {
+            messenger().getOwnStickerPacks().addCallback(new MVVMCollection.OnChangedListener() {
+                @Override
+                public void onChanged() {
+                    count = messenger().getOwnStickerPacks().getValuesMap().values().size();
+                    if (tabs != null) {
+                        tabs.notifyDataSetChanged();
+                    }
+                    notifyDataSetChanged();
+                }
+            });
+        }*/
 
     }
 

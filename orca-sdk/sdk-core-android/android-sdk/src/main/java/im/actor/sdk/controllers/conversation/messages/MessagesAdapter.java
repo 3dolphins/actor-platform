@@ -284,4 +284,8 @@ public class MessagesAdapter extends BindedListAdapter<Message, MessageHolder> {
     public ActorBinder getBinder() {
         return BINDER;
     }
+
+    public Context getContext() {
+        return context;
+    }
 }

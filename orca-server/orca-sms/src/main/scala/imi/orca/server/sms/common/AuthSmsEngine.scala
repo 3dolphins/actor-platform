@@ -1,7 +1,7 @@
 package imi.orca.server.sms.common
 
 import cats.data.Xor
-import imi.orca.server.sms.model.{AuthyFailed, AuthyPhone, AuthySuccess}
+import imi.orca.server.sms.model.{ AuthyFailed, AuthyPhone, AuthySuccess }
 
 import scala.concurrent.Future
 

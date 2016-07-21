@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2015 Actor LLC. <https://actor.im>
+  ~ Copyright (C) 2015 Orca Messenger LLC. <https://Orca Messenger.im>
   -->
 
 <resources>
-    <string name="app_name">Actor</string>
+    <string name="app_name">Orca Messenger</string>
     <string name="app_locale">Ar</string>
 
     <string name="dialog_ok">حسنا</string>
@@ -34,7 +34,7 @@
     <string name="menu_saved">تم حفظ</string>
     <string name="menu_next">تالي</string>
 
-    <string name="invite_message">هيا بنا نبدل الى اكتور {inviteUrl}</string>
+    <string name="invite_message">هيا بنا نبدل الى Orca Messenger {inviteUrl}</string>
 
     <!-- Tour -->
     <string name="tour_sign_up">تسجيل</string>
@@ -44,17 +44,17 @@
     <string name="tour_sign_using_oauth">مع قوقل</string>
     <string name="tour_back_to_top">Back to top</string>
 
-    <string name="tour_welcome_title">اكتور</string>
+    <string name="tour_welcome_title">Orca Messenger</string>
     <string name="tour_welcome_subtitle">محادثات آمنة بينك وبين اصدقائك و فريقك </string>
 
-    <string name="tour_groups_title">محادثة مجموعة كبيرة !!</string>
-    <string name="tour_groups_text">لا يصدق دردشات المجموعة الكبيرة. أكثر من 300 المستخدمين في مجموعة واحدة. التواصل مع فريقك واتخاذ القرارات معا .</string>
+    <string name="tour_groups_title">دردشات المجموعة الكبيرة</string>
+    <string name="tour_groups_subtitle">دردشات المجموعة دعم أكثر من 500 من المستخدمين في مجموعة واحدة. التواصل مع فريقك واتخاذ القرارات معا.</string>
 
-    <string name="tour_everywhere_title">العمل في كل مكان</string>
-    <string name="tour_everywhere_text">بغض النظر عن مكان وجودك في مترو الأنفاق أو على التلال الجبلية . سوف تصل رسالتك إلى الشعب دائما على حق</string>
+    <string name="tour_everywhere_title">البقاء على اتصال في أي مكان</string>
+    <string name="tour_everywhere_text">في كل مكان كنت، في المطعم أو على الشاطئ، والرسالة تصل دائما إلى الأشخاص المناسبين.</string>
 
-    <string name="tour_secure_title">امن &amp; وخصوصي</string>
-    <string name="tour_secure_text">وتأكدوا أن أحدا لن يقرأ رسائلك . تبادل الوثائق والملفات و الصور من دون الخوف من أنهم يمكن أن تقع في الأيدي الخطأ .</string>
+    <string name="tour_secure_title">تأمين و. محمي</string>
+    <string name="tour_secure_text">على ثقة من أن أحدا لن التسلل من أي وقت مضى في رسائلك. تبادل الوثائق، ووسائل الإعلام دون الخوف من أنهم يمكن أن تقع في الأيدي الخطأ. يتم تشفير لدينا كل الأحاديث.</string>
 
     <!-- Phone Sign Fragment -->
     <string name="auth_phone_title">تاكد من الرقم</string>
@@ -131,7 +131,7 @@
     <string name="main_sync_message">من فضلك انتظر دقيقتين بينما نحن تمكين التطبيق الخاص بك .</string>
 
     <string name="main_empty_title">دعوة أصدقائك</string>
-    <string name="main_empty_invite_hint">لا يجود اي من اصدقائك استخدم برنامج اكتور ماسنجر . اضغط الزر ادناه لدعوة اصدقائك</string>
+    <string name="main_empty_invite_hint">لا يجود اي من اصدقائك استخدم برنامج Orca Messenger ماسنجر . اضغط الزر ادناه لدعوة اصدقائك</string>
     <string name="main_empty_invite_action">اخبر صديق</string>
     <string name="main_empty_add_hint">او اضف صديقك يدويا</string>
     <string name="main_empty_add_action">اضف جهة اتصال</string>
@@ -172,11 +172,11 @@
     <!-- Contacts -->
     <string name="contacts_title">جهات الاتصال</string>
     <string name="contacts_empty_short">لا يوجد جهات اتصال</string>
-    <string name="contacts_share">اخبر اصدقائك عن اكتور </string>
+    <string name="contacts_share">اخبر اصدقائك عن Orca Messenger </string>
     <string name="contacts_add">اضف صديق...</string>
 
-    <string name="contacts_empty_title">ادعو صديق لتطبيق اكتور</string>
-    <string name="contacts_empty_invite_hint">ليس لديك اصدقاء بتطبيق اكتور . يرجى دعوتهم للتطبيق</string>
+    <string name="contacts_empty_title">ادعو صديق لتطبيق Orca Messenger</string>
+    <string name="contacts_empty_invite_hint">ليس لديك اصدقاء بتطبيق Orca Messenger . يرجى دعوتهم للتطبيق</string>
     <string name="contacts_empty_invite_action">اخبر صديق</string>
     <string name="contacts_empty_add_hint">أو يدويا إضافة جهة اتصال عن طريق الضغط على زر زائد أدناه.</string>
 
@@ -306,7 +306,7 @@
 
     <!-- Invite link-->
     <string name="invite_link_title">رابط للدعوة</string>
-    <string name="invite_link_hint">اي شخص مثبت لديه برنامج اكتور يستطيع الانصمام بالرابط</string>
+    <string name="invite_link_hint">اي شخص مثبت لديه برنامج Orca Messenger يستطيع الانصمام بالرابط</string>
     <string name="invite_link_action_copy">نسخ الرابط</string>
     <string name="invite_link_action_revoke">إلغاء صلة</string>
     <string name="invite_link_action_share">رابط المشاركة</string>

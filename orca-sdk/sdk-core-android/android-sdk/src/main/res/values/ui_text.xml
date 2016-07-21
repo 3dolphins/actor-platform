@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2015 Actor LLC. <https://actor.im>
+  ~ Copyright (C) 2015 Orca Messenger LLC. <https://Orca Messenger.im>
   -->
 
 <resources>
-    <string name="app_name">Actor</string>
+    <string name="app_name">Orca Messenger</string>
     <string name="app_locale">En</string>
 
     <string name="dialog_ok">OK</string>
@@ -57,17 +57,26 @@
     <string name="tour_sign_using_oauth">with google</string>
     <string name="tour_back_to_top">Back to top</string>
 
-    <string name="tour_welcome_title">Actor</string>
+    <string name="tour_welcome_title">Orca Messenger</string>
     <string name="tour_welcome_subtitle">Secure messaging for Teams and Friends</string>
 
-    <string name="tour_groups_title">Huge Group Chats</string>
-    <string name="tour_groups_text">Group chats supporting more than 300 users in a single group. Communicate with your team and make decisions together.</string>
+    <string name="tour_groups_title">Large Group Chats</string>
+    <string name="tour_groups_text">Group chats supporting more than 500 users in a single group. Communicate with your team and make decisions together.</string>
 
-    <string name="tour_everywhere_title">Works everywhere</string>
-    <string name="tour_everywhere_text">Anywhere you are, in the subway or in the mountains, your message will always reach the right people.</string>
+    <string name="tour_everywhere_title">Stay Connected Anywhere</string>
+    <string name="tour_everywhere_text">Everywhere you are, in the restaurant or on the beach, your message will always reach the right people.</string>
 
-    <string name="tour_secure_title">Secure&amp;Private</string>
-    <string name="tour_secure_text">Rest assured that no one will ever read your messages. Share documents, files and photos without fear that they could fall into the wrong hands. All our chats are encrypted.</string>
+    <string name="tour_secure_title">Secure &amp; Protected</string>
+    <string name="tour_secure_text">Confident that no one will ever sneak in your messages. Share documents, and media without fear that they could fall into the wrong hands. All our chats are encrypted.</string>
+
+    <string name="tour_chatcall_title">Voice &amp; Video Call</string>
+    <string name="tour_chatcall_text">Save your cost to talk and conference with your friends and family. Get closer with them anywhere</string>
+
+    <string name="tour_payment_title">Mobile Payment Transfer</string>
+    <string name="tour_payment_text">Easily transfer your money to your friends, family and team, and share your wallet for team or family events</string>
+
+    <string name="tour_news_title">Always Get Updated News </string>
+    <string name="tour_news_text">Keep up to date with current information and share your favourite new to your friend and team</string>
 
     <!-- Phone Sign Fragment -->
     <string name="auth_phone_title">Sign up</string>
@@ -177,7 +186,7 @@
     <string name="settings_menu_edit_profile">Edit profile</string>
     <string name="settings_menu_change_photo">Change photo</string>
     <string name="settings_header">Settings</string>
-    <string name="about_header">About Actor</string>
+    <string name="about_header">About Orca Messenger</string>
     <string name="settings_help">Help</string>
     <string name="settings_ask">Ask a Question</string>
     <string name="settings_twitter">Twitter</string>
@@ -233,7 +242,6 @@
     <string name="contacts_menu_edit">Edit name</string>
 
     <string name="contacts_invite_via_link">Invite via link</string>
-
     <string name="invites_select_all">Select all</string>
     <string name="invites_select_none">Select none</string>
 
@@ -551,5 +559,6 @@
     </string>
     <string name="error_view_url">Unknown URL type</string>
 
-
+    <!-- Messages -->
+    <string name="save_contact">Save Contact</string>
 </resources>

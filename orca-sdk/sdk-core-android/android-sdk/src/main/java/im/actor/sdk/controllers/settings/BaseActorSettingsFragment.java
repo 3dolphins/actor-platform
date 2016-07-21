@@ -426,7 +426,10 @@ public abstract class BaseActorSettingsFragment extends BaseFragment implements 
 
         if (ActorSDK.sharedActor().getHelpPhone() == null || ActorSDK.sharedActor().getHelpPhone().isEmpty()) {
             askQuestion.setVisibility(View.GONE);
-            view.findViewById(R.id.divider3).setVisibility(View.GONE);
+            View divider3View = view.findViewById(R.id.divider3);
+                if (divider3View != null) {
+                    divider3View.setVisibility(View.GONE);
+                }
         }
         askQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -713,7 +716,7 @@ public abstract class BaseActorSettingsFragment extends BaseFragment implements 
         }
         String externalPath = externalFile.getAbsolutePath();
 
-        File dest = new File(externalPath + "/actor/wallpapers/");
+        File dest = new File(externalPath + "/orca/wallpapers/");
         dest.mkdirs();
 
         File outputFile = new File(dest, "customWallpaper" + ".jpg");

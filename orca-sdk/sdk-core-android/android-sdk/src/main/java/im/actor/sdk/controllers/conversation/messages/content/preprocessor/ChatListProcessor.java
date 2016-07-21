@@ -7,6 +7,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
 
@@ -68,15 +69,7 @@ public class ChatListProcessor implements ListProcessor<Message> {
         if (isGroup) {
             group = groups().get(peer.getPeerId());
         }
-        colors = new int[]{
-                context.getResources().getColor(R.color.placeholder_0),
-                context.getResources().getColor(R.color.placeholder_1),
-                context.getResources().getColor(R.color.placeholder_2),
-                context.getResources().getColor(R.color.placeholder_3),
-                context.getResources().getColor(R.color.placeholder_4),
-                context.getResources().getColor(R.color.placeholder_5),
-                context.getResources().getColor(R.color.placeholder_6),
-        };
+        colors = ActorSDK.sharedActor().style.getDefaultAvatarPlaceholders();
     }
 
     @Nullable
@@ -217,10 +210,11 @@ public class ChatListProcessor implements ListProcessor<Message> {
                 String name;
                 name = contact.getName();
                 builder.append(name);
-                builder.setSpan(new ForegroundColorSpan(colors[Math.abs(msg.getSenderId()) % colors.length]), 0, name.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-                //builder.append("\n");
-                spannableString = builder.append(spannableString);
+                builder.setSpan(new ForegroundColorSpan(colors[Math.abs(msg.getSenderId()) % colors.length]), 0, name.length() , Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
+                builder.append("\n");
+                spannableString = builder.append(spannableString);
+                builder.setSpan(new RelativeSizeSpan(0.9f), name.length() + 2, (name + "\n" + text).length(), 0); // se
 
                 preprocessedTexts.put(msg.getRid(), new PreprocessedTextData(reactions, text, spannableString));
 

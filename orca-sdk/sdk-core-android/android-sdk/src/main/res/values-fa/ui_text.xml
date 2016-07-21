@@ -4,7 +4,7 @@
   -->
 
 <resources>
-    <string name="app_name">اکتور</string>
+    <string name="app_name">Orca Messenger</string>
     <string name="app_locale">Fa</string>
 
     <string name="dialog_ok">قبول</string>
@@ -56,14 +56,14 @@
     <string name="tour_welcome_title">{appName}</string>
     <string name="tour_welcome_subtitle">با دوستان هم‌سخن شوید</string>
 
-    <string name="tour_groups_title">گروه‌های بزرگ </string>
-    <string name="tour_groups_text">گرو‌های خیلی بزرگ. بیشتر از سیصد نفر باشید و با هم گپ و گفت کنید</string>
+    <string name="tour_groups_title">چت گروه بزرگ</string>
+    <string name="tour_groups_text">چت گروه حمایت از کاربران بیش از 500 در یک گروه. ارتباط با تیم خود و تصمیم گیری با هم.</string>
 
-    <string name="tour_everywhere_title">کار در همه جا</string>
-    <string name="tour_everywhere_text">مهم نیست کجایید. داخل مترو یا جاده‌های سفر. پیام‌هاتان به دست دوستان‌تان می‌رسد.</string>
+    <string name="tour_everywhere_title">جا متصل بمانید</string>
+    <string name="tour_everywhere_text">در همه جا شما، در رستوران یا در ساحل، پیام خود را همیشه حق مردم برسد.</string>
 
-    <string name="tour_secure_title">امن و خصوصی</string>
-    <string name="tour_secure_text">فرد دیگری نمی‌تواند به پیام‌های شما دست‌رسی داشته باشد. اسناد و تصاویرتان را با دوستان‌تان با خیال آسوده به اشتراک بگذارید</string>
+    <string name="tour_secure_title">امن و. حفاظت شده</string>
+    <string name="tour_secure_text">با اعتماد به نفس است که هیچ کس در پیام های خود را دزدکی حرکت کردن. به اشتراک گذاری اسناد و رسانه بدون ترس که آنها می توانند به دست اشتباه می گیرند. تمام چت ما رمزگذاری شده است.</string>
 
     <!-- Phone Sign Fragment -->
     <string name="auth_phone_title"> شناسایی شماره همراه</string>

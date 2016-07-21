@@ -1,5 +1,6 @@
 package im.actor.sdk.controllers.conversation.messages.content;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.provider.ContactsContract;
+import android.provider.Settings;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AlertDialog;
@@ -28,6 +31,8 @@ import im.actor.sdk.util.Screen;
 import im.actor.sdk.view.TintImageView;
 import im.actor.sdk.view.avatar.AvatarPlaceholderDrawable;
 
+import java.util.ArrayList;
+
 import static im.actor.sdk.util.ActorSDKMessenger.myUid;
 
 public class ContactHolder extends MessageHolder {
@@ -40,6 +45,7 @@ public class ContactHolder extends MessageHolder {
     private final TintImageView stateIcon;
     private final TextView time;
 
+    protected MessagesAdapter fragment;
     protected ViewGroup mainContainer;
     protected FrameLayout messageBubble;
     protected TextView text;
@@ -49,6 +55,7 @@ public class ContactHolder extends MessageHolder {
 
     public ContactHolder(MessagesAdapter fragment, final View itemView) {
         super(fragment, itemView, false);
+        this.fragment = fragment;
         waitColor = ActorSDK.sharedActor().style.getConvStatePendingColor();
         sentColor = ActorSDK.sharedActor().style.getConvStateSentColor();
         deliveredColor = ActorSDK.sharedActor().style.getConvStateDeliveredColor();
@@ -156,21 +163,57 @@ public class ContactHolder extends MessageHolder {
             items[i++] = email;
         }
 
-        new AlertDialog.Builder(itemView.getContext())
-                .setItems(items, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface d, int which) {
-                        if (which + 1 <= contact.getPhones().size()) {
+        AlertDialog.Builder contactActionDialog =  new AlertDialog.Builder(itemView.getContext());
+        contactActionDialog.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface d, int which) {
+                if (which + 1 <= contact.getPhones().size()) {
 
-                            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", contact.getPhones().get(which), null));
-                            itemView.getContext().startActivity(intent);
-                        } else {
-                            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", contact.getEmails().get(which - contact.getPhones().size()), null));
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", contact.getPhones().get(which), null));
+                    itemView.getContext().startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", contact.getEmails().get(which - contact.getPhones().size()), null));
 
-                            itemView.getContext().startActivity(intent);
-                        }
-                    }
-                }).show();
+                    itemView.getContext().startActivity(intent);
+                }
+            }
+        });
+        contactActionDialog.setTitle(contact.getName());
+
+        /**
+         * Add contact to phone
+         */
+        contactActionDialog.setPositiveButton(fragment.getContext().getResources().getString(R.string.save_contact), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                ArrayList<ContentValues> contactData = new ArrayList<ContentValues>();
+                ContentValues row = new ContentValues();
+
+                for (String phone : contact.getPhones()) {
+                    row = new ContentValues();
+                    row.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE);
+                    row.put(ContactsContract.CommonDataKinds.Phone.NUMBER, phone);
+                    contactData.add(row);
+                }
+
+                for (String email : contact.getEmails()) {
+                    row = new ContentValues();
+                    row.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE);
+                    row.put(ContactsContract.CommonDataKinds.Email.ADDRESS, email);
+                    contactData.add(row);
+                }
+
+                Intent intent = new Intent(Intent.ACTION_INSERT, ContactsContract.Contacts.CONTENT_URI);
+                intent.putExtra(ContactsContract.Intents.Insert.NAME, contact.getName());
+                intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
+
+                fragment.getContext().startActivity(intent);
+
+
+            }
+        });
+
+        contactActionDialog.show();
+
     }
 
     private RoundedBitmapDrawable getRoundedBitmapDrawable(Context context, Bitmap b) {

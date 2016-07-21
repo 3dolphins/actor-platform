@@ -226,7 +226,6 @@ public class ChatFragment extends BaseFragment implements InputBarCallback, Mess
 
     @Override
     public void onTextFocusChanged(boolean isFocused) {
-
     }
 
     @Override

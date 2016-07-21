@@ -19,7 +19,7 @@ include ":orca-sdk:sdk-api:api-codegen"
 // SDK Android
 //
 
-include ":orca-sdk:sdk-core-android:android-app"
+include ":orca-sdk:sdk-core-android:orca-android"
 include ":orca-sdk:sdk-core-android:android-sdk"
 
 //Google push for Android SDk

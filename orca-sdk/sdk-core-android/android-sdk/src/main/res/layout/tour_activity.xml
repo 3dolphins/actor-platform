@@ -70,19 +70,19 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <im.actor.tour.PagerContainer
+    <imi.orca.tour.PagerContainer
         android:id="@+id/pager_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="-100dp">
 
-        <im.actor.tour.VerticalViewPager
+        <imi.orca.tour.VerticalViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center" />
-    </im.actor.tour.PagerContainer>
+    </imi.orca.tour.PagerContainer>
 
     <LinearLayout
         android:id="@+id/background"

@@ -26,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import android.widget.RelativeLayout;
 import im.actor.core.entity.Peer;
 import im.actor.core.entity.Sticker;
 import im.actor.sdk.R;
@@ -86,6 +87,7 @@ public class EmojiKeyboard extends BaseKeyboard implements OnSmileClickListener,
     protected View createView() {
         final View emojiPagerView = LayoutInflater.from(activity).inflate(R.layout.emoji_smiles_pager, null);
 
+
         final ViewPager emojiPager = (ViewPager) emojiPagerView.findViewById(R.id.emoji_pager);
 
         final PagerSlidingTabStrip emojiPagerIndicator = (PagerSlidingTabStrip) emojiPagerView.findViewById(R.id.emoji_pager_indicator);
@@ -131,7 +133,6 @@ public class EmojiKeyboard extends BaseKeyboard implements OnSmileClickListener,
 
                 emojiPager.setCurrentItem(1, true);
 
-
             }
         });
 
@@ -167,18 +168,6 @@ public class EmojiKeyboard extends BaseKeyboard implements OnSmileClickListener,
             }
         });
 
-        //emojiPagerIndicator.setLayoutParams(new RelativeLayout.LayoutParams(Screen.dp(58 * mEmojisAdapter.getCount()), Screen.dp(48)));
-//        emojiPager.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                emojiPager.setAlpha(0f);
-//                emojiPagerIndicator.setAlpha(0f);
-//                animateView(emojiPager);
-//                animateView(emojiPagerIndicator);
-//                emojiPager.setAdapter(mEmojisAdapter);
-//                emojiPagerIndicator.setViewPager(emojiPager);
-//            }
-//        }, BINDING_DELAY);
 
         if (SmilesPack.getRecent().size() == 0) {
             emojiPager.setCurrentItem(1);

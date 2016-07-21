@@ -14,7 +14,6 @@ object ActivationStateActor {
 
   private[activation] case class SendAck(result: CodeFailure Xor Unit)
 
-
   object ForgetSentCode {
     def phone(phone: Long) = ForgetSentCode(phone)
     def email(email: String) = ForgetSentCode(email)

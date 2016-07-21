@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2015 Actor LLC. <https://actor.im>
+  ~ Copyright (C) 2015 Orca Messenger LLC. <https://Orca Messenger.im>
   -->
 
 <resources>
-    <string name="app_name">Actor</string>
+    <string name="app_name">Orca Messenger</string>
     <string name="app_locale">Ru</string>
 
     <string name="dialog_ok">OK</string>
@@ -51,17 +51,17 @@
     <string name="tour_sign_using_oauth">используя  Google</string>
     <string name="tour_back_to_top">Вернуться назад</string>
 
-    <string name="tour_welcome_title">Actor</string>
+    <string name="tour_welcome_title">Orca Messenger</string>
     <string name="tour_welcome_subtitle">Безопасное общение для команд и друзей</string>
 
-    <string name="tour_groups_title">Огромные группы</string>
-    <string name="tour_groups_text">Групповые чаты для более чем 300 человек. Общайтесь со своей командой и принимайте решения вместе.</string>
+    <string name="tour_groups_title">Большой Групповой чат</string>
+    <string name="tour_groups_text">Группа чатов с поддержкой более 500 пользователей в одной группе. Общайтесь с вашей командой и принимать решения вместе.</string>
 
-    <string name="tour_everywhere_title">Работает везде</string>
-    <string name="tour_everywhere_text">Не важно где вы находитесь: в метро или в горах. Ваши сообщения всегда будут доставлены адресату.</string>
+    <string name="tour_everywhere_title">Оставайтесь на связи в любом месте</string>
+    <string name="tour_everywhere_text">Везде вы, в ресторане или на пляже, ваше сообщение будет всегда доходят до нужных людей.</string>
 
-    <string name="tour_secure_title">Безопасен</string>
-    <string name="tour_secure_text">Не переживайте, никто не сможет прочитать ваши сообщения. Делитесь документами и фотографиями не боясь, что они попадут не в те руки. Шифруем прямо у вас на устройстве.</string>
+    <string name="tour_secure_title">Безопасные и; защищенный</string>
+    <string name="tour_secure_text">Уверенный, что никто не будет когда-либо прокрасться в ваших сообщениях. Совместное использование документов и средств массовой информации, не опасаясь, что они могут попасть в чужие руки. Все наши чаты шифруются.</string>
 
     <!-- Phone Sign Fragment -->
     <string name="auth_phone_title">Регистрация</string>

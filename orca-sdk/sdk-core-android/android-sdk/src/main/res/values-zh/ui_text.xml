@@ -4,7 +4,7 @@
   -->
 
 <resources>
-    <string name="app_name">优聆</string>
+    <string name="app_name">Orca Messenger</string>
     <string name="app_locale">Cn</string>
 
     <string name="dialog_ok">确定</string>
@@ -47,14 +47,14 @@
     <string name="tour_welcome_title">{appName}</string>
     <string name="tour_welcome_subtitle">针对团队和朋友的安全交流工具</string>
 
-    <string name="tour_groups_title">超多人的群组</string>
-    <string name="tour_groups_text">难以置信的超多人群聊。每个群组可以超过300人。 团队可以一起交流和一起做决策。</string>
+    <string name="tour_groups_title">大型群聊</string>
+    <string name="tour_groups_text">群聊在单个组中支持超过500个用户。与您的团队沟通，一起做决定。</string>
 
-    <string name="tour_everywhere_title">随处都可开展工作</string>
-    <string name="tour_everywhere_text">无论你是在地铁中还是在山中，都可把消息准确无误地传递到。</string>
+    <string name="tour_everywhere_title">保持联系任何地方</string>
+    <string name="tour_everywhere_text">不论你是在餐厅或在沙滩上，你的消息总是会到达合适的人。</string>
 
-    <string name="tour_secure_title">安全与保密</string>
-    <string name="tour_secure_text">不必担心别人可以看到你的消息。共享的文档、文件、照片不用担心落入他人手中。</string>
+    <string name="tour_secure_title">安全和;受保护</string>
+    <string name="tour_secure_text">相信没有人会偷偷在你的消息。共享文档和媒体，而不必担心他们可能落入他人之手。我们所有的聊天记录进行加密。</string>
 
     <!-- Phone Sign Fragment -->
     <string name="auth_phone_title">验证手机</string>

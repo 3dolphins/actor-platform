@@ -6,8 +6,7 @@
 <resources>
 
     <!-- Root colors -->
-
-    <color name="primary">#4d74a6</color>
+    <color name="primary">#2D9FC5</color>
     <color name="primary_hovered">#3d5d85</color>
     <color name="primary_pressed">#6b85a6</color>
     <color name="primary_text">#ffffff</color>
@@ -44,7 +43,6 @@
     <!--<color name="text_subheader_inv">#8Fffffff</color>-->
 
     <!-- Selector & divider colors -->
-
     <color name="dialog_overlay">#33000000</color>
 
     <color name="selector_selected">#66999999</color>

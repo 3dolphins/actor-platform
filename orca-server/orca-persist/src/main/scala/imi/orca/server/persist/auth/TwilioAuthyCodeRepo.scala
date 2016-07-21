@@ -5,8 +5,8 @@ import imi.orca.server.model.auth.TwilioAuthyCode
 
 final class TwilioAuthyCodeTable(tag: Tag) extends Table[TwilioAuthyCode](tag, "twilio_authy_codes") {
   def transactionHash = column[String]("transaction_hash", O.PrimaryKey)
-  def phoneNumber = column[Long] ("phone_number")
-  def countryCode = column[Int] ("country_code")
+  def phoneNumber = column[Long]("phone_number")
+  def countryCode = column[Int]("country_code")
   def isDeleted = column[Boolean]("is_deleted")
 
   def * = (transactionHash, phoneNumber, countryCode, isDeleted) <> (TwilioAuthyCode.tupled, TwilioAuthyCode.unapply)

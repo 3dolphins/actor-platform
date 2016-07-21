@@ -62,6 +62,7 @@ public abstract class BaseContactFragment extends DisplayListFragment<Contact, C
         if (emptyView != null) {
             emptyView.setBackgroundColor(ActorSDK.sharedActor().style.getMainBackgroundColor());
             emptyView.findViewById(R.id.empty_collection_bg).setBackgroundColor(ActorSDK.sharedActor().style.getMainColor());
+            emptyView.findViewById(R.id.empty_collection_bg).setBackgroundResource(R.drawable.contacts_empty_large);
             ((TextView) emptyView.findViewById(R.id.empty_collection_text)).setTextColor(ActorSDK.sharedActor().style.getMainColor());
         } else {
             emptyView = res.findViewById(R.id.empty_collection_text);

@@ -39,12 +39,14 @@ public class GlobalPlaceholderFragment extends BaseFragment {
         syncInProgressView.findViewById(R.id.sync_background).setBackgroundColor(style.getMainColor());
         syncInProgressView.findViewById(R.id.syncInProgress).setBackgroundColor(style.getMainBackgroundColor());
         emptyContactsView = res.findViewById(R.id.emptyContacts);
+
         res.findViewById(R.id.emptyContactsFrame).setBackgroundColor(ActorSDK.sharedActor().style.getMainBackgroundColor());
         ((TextView) emptyContactsView.findViewById(R.id.no_contacts)).setTextColor(style.getTextSecondaryColor());
         ((TextView) emptyContactsView.findViewById(R.id.no_contacts)).setText(getResources().getString(R.string.main_empty_invite_hint).replace("{appName}", ActorSDK.sharedActor().getAppName()));
         ((TextView) emptyContactsView.findViewById(R.id.add_contact_manually_text)).setTextColor(style.getTextSecondaryColor());
         ((TextView) emptyContactsView.findViewById(R.id.empty_contacts_text)).setTextColor(style.getMainColor());
         emptyContactsView.findViewById(R.id.empty_contacts_bg).setBackgroundColor(style.getMainColor());
+        emptyContactsView.findViewById(R.id.empty_contacts_bg).setBackgroundResource(R.drawable.contacts_empty_large);
 
         //
         // Actions

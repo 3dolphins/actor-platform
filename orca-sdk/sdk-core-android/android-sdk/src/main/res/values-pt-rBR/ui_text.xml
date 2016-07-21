@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2015 Actor LLC. <https://actor.im>
+  ~ Copyright (C) 2015 Orca Messenger LLC. <https://Orca Messenger.im>
   -->
 
 <resources>
-    <string name="app_name">Actor</string>
+    <string name="app_name">Orca Messenger</string>
     <string name="app_locale">Pt</string>
 
     <string name="dialog_ok">OK</string>
@@ -46,14 +46,14 @@
     <string name="tour_welcome_title">{appName}</string>
     <string name="tour_welcome_subtitle">Mensagens seguras para Equipes e Amigos</string>
 
-    <string name="tour_groups_title">Grandes Grupos de Conversação</string>
-    <string name="tour_groups_text">Grupos realmente grades de conversação. Mais de 300 usuários por grupo. Comunique-se com suas equipes e tomem decisões em conjunto.</string>
+    <string name="tour_groups_title">Bate-papo Grupo Grande</string>
+    <string name="tour_groups_text">Conversas em grupo de apoio mais de 500 usuários em um único grupo. Comunique-se com sua equipe e tomar decisões em conjunto.</string>
 
-    <string name="tour_everywhere_title">Funciona em todas as plataformas</string>
-    <string name="tour_everywhere_text">Não importa se você está no metrô ou nas montanhas. Sua mensagem sempre chegará a pessoa certa.</string>
+    <string name="tour_everywhere_title">Fique conectado em qualquer lugar</string>
+    <string name="tour_everywhere_text">Onde quer que você esteja, no restaurante ou na praia, sua mensagem será sempre alcançar as pessoas certas..</string>
 
-    <string name="tour_secure_title">Seguro e Privado</string>
-    <string name="tour_secure_text">Tenha certeza de que ninguém vai ler suas mensagens. Compartilhe documentos, arquivos e fotos sem medo de que elas terminem em mãos erradas.</string>
+    <string name="tour_secure_title">Seguros e; Protegido</string>
+    <string name="tour_secure_text">Confiante de que ninguém nunca vai esgueirar-se em suas mensagens. Compartilhe documentos e mídia sem medo de que eles poderiam cair em mãos erradas. Todos os nossos bate-papos são criptografados.</string>
 
     <!-- Phone Sign Fragment -->
     <string name="auth_phone_title">Verificar telefone</string>

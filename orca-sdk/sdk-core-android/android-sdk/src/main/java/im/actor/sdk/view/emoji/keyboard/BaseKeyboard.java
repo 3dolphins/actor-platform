@@ -1,14 +1,19 @@
 package im.actor.sdk.view.emoji.keyboard;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -28,19 +33,16 @@ public class BaseKeyboard implements
     protected Activity activity;
     private View decorView;
     private boolean softKeyboardListeningEnabled = true;
-    private boolean emojiKeyboardIsOpening;
     private InputMethodManager inputMethodManager;
     private View emojiKeyboardView;
     protected EditText messageBody;
     public static final int OVERLAY_PERMISSION_REQ_CODE = 735;
 
-    Boolean pendingOpen = false;
 
     private KeyboardStatusListener keyboardStatusListener;
 
     final WindowManager windowManager;
     int keyboardHeight = 0;
-    private boolean showingPending;
 
     private boolean showing;
     private boolean dismissed;
@@ -52,8 +54,6 @@ public class BaseKeyboard implements
         this.inputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         this.decorView = activity.getWindow().getDecorView();
         decorView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-        //setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        //default size
         keyboardHeight = (int) activity.getResources().getDimension(R.dimen.keyboard_height);
     }
 
@@ -72,6 +72,7 @@ public class BaseKeyboard implements
 
         showing = true;
         dismissed = false;
+        inputMethodManager.showSoftInput(messageBody, InputMethodManager.SHOW_IMPLICIT);
         if (softwareKeyboardShowing) {
             showInternal();
         } else {
@@ -95,7 +96,6 @@ public class BaseKeyboard implements
         } else {
             showChecked();
         }
-
     }
 
     public void showChecked() {
@@ -105,47 +105,13 @@ public class BaseKeyboard implements
         emojiKeyboardView = createView();
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
-                (keyboardHeight),
+                keyboardHeight,
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
         windowManager.addView(emojiKeyboardView, params);
-//        emojiKeyboardView.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                AlphaAnimation animation = new AlphaAnimation(0, 1);
-//                animation.setDuration(400);
-//                animation.setInterpolator(new MaterialInterpolator());
-//                animation.setStartOffset(0);
-//                animation.setAnimationListener(new Animation.AnimationListener() {
-//                    @Override
-//                    public void onAnimationStart(Animation animation) {
-//                        Log.d(TAG, "onAnimationStart");
-//                    }
-//
-//                    @Override
-//                    public void onAnimationEnd(Animation animation) {
-//                        Log.d(TAG, "onAnimationEnd");
-//                    }
-//
-//                    @Override
-//                    public void onAnimationRepeat(Animation animation) {
-//                        Log.d(TAG, "onAnimationReset");
-//                    }
-//                });
-//            }
-//        });
-
-//        emojiKeyboardView.setTranslationY(140);
-//        emojiKeyboardView
-//                .animate()
-//                .y(0)
-//                .setDuration(200)
-//                .setStartDelay(0)
-//                .setInterpolator(new DecelerateInterpolator(1.4f))
-//                .start();
 
         if (keyboardStatusListener != null)
             keyboardStatusListener.onShow();
@@ -176,21 +142,6 @@ public class BaseKeyboard implements
     private void dismissInternally() {
         if (dismissed && emojiKeyboardView != null) {
             final View emojiKeyboardViewCopy = emojiKeyboardView;
-//            emojiKeyboardView
-//                    .animate()
-//                    .y(140)
-//                    .alpha(0.2f)
-//                    .setDuration(200)
-//                    .setStartDelay(0)
-//                    .setInterpolator(new AccelerateInterpolator(1.5f))
-//                    .setListener(new AnimatorListenerAdapter() {
-//                        @Override
-//                        public void onAnimationEnd(Animator animation) {
-//                            emojiKeyboardViewCopy.setVisibility(View.GONE);
-//                            windowManager.removeView(emojiKeyboardViewCopy);
-//                        }
-//                    })
-//                    .start();
             emojiKeyboardViewCopy.setVisibility(View.GONE);
             windowManager.removeView(emojiKeyboardViewCopy);
             showing = false;
@@ -273,9 +224,7 @@ public class BaseKeyboard implements
         } else {
             Log.d(TAG, "onGlobalLayout: " + heightDifference);
             Log.d(TAG, "onGlobalLayout: " + "dismiss?");
-            // dismiss not wirk
             softwareKeyboardShowing = false;
-            // keyboard showing or not?
             dismissed = true;
             dismissInternally();
         }
@@ -286,19 +235,16 @@ public class BaseKeyboard implements
     }
 
     protected void onDismiss() {
-        // override it
     }
 
     protected void onShow() {
-        // override it
     }
 
     protected View createView() {
         TextView view = new TextView(activity);
-        view.setText("Example of keyboard");
+        view.setText("");
         view.setGravity(Gravity.CENTER);
         view.setBackgroundColor(0xffdadddf);
-
         return view;
     }
 }

@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 
+import android.view.WindowManager;
 import im.actor.core.entity.Peer;
 import im.actor.sdk.R;
 import im.actor.sdk.controllers.activity.BaseActivity;
@@ -36,6 +37,7 @@ public class ChatActivity extends BaseActivity {
         //
         setContentView(R.layout.activity_dialog);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
 
         //
         // Loading Fragments if needed

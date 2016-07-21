@@ -46,38 +46,44 @@ public final class ActorPushRegister {
                 }
             }
 
-            final Request request = new Request.Builder()
-                    .url(endpoint)
-                    .method("POST", RequestBody.create(MediaType.parse("application/json"), "{}"))
-                    .build();
+            try {
+                final Request request = new Request.Builder()
+                        .url(endpoint)
+                        .method("POST", RequestBody.create(MediaType.parse("application/json"), "{}"))
+                        .build();
 
-            client.newCall(request).enqueue(new com.squareup.okhttp.Callback() {
+                client.newCall(request).enqueue(new com.squareup.okhttp.Callback() {
 
-                @Override
-                public void onFailure(Request request, IOException e) {
-                    Log.d("ACTOR_PUSH", "ACTOR_PUSH not registered: " + e.getMessage());
-                }
-
-                @Override
-                public void onResponse(Response response) throws IOException {
-                    try {
-                        String res = response.body().string();
-                        JSONObject js = new JSONObject(res).getJSONObject("data");
-                        String endpoint1 = js.getString("endpoint");
-                        sharedPreferences.edit()
-                                .putString("registration_endpoint", endpoint1)
-                                .putString("registration_data", js.toString())
-                                .commit();
-                        startService(js, context);
-                        Log.d("ActorPushRegister", "Endpoint: " + endpoint1);
-                        callback.onRegistered(endpoint1);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        // TODO: Handle?
+                    @Override
+                    public void onFailure(Request request, IOException e) {
+                        Log.d("ACTOR_PUSH", "ACTOR_PUSH not registered: " + e.getMessage());
                     }
-                }
-            });
-        });
+
+                    @Override
+                    public void onResponse(Response response) throws IOException {
+                        try {
+                            String res = response.body().string();
+                            JSONObject js = new JSONObject(res).getJSONObject("data");
+                            String endpoint1 = js.getString("endpoint");
+                            sharedPreferences.edit()
+                                    .putString("registration_endpoint", endpoint1)
+                                    .putString("registration_data", js.toString())
+                                    .commit();
+                            startService(js, context);
+                            Log.d("ActorPushRegister", "Endpoint: " + endpoint1);
+                            callback.onRegistered(endpoint1);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            // TODO: Handle?
+                        }
+                    }
+                });
+            }   catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        );
     }
 
     private static void startService(JSONObject config, Context context) {
