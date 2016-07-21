@@ -214,7 +214,8 @@ public class ChatListProcessor implements ListProcessor<Message> {
 
                 builder.append("\n");
                 spannableString = builder.append(spannableString);
-                builder.setSpan(new RelativeSizeSpan(0.9f), name.length() + 2, (name + "\n" + text).length(), 0); // se
+                builder.append("\n");
+                builder.setSpan(new RelativeSizeSpan(0.9f), name.length() + 2, (name + "\n" + text + "\n").length(), 0); // se
 
                 preprocessedTexts.put(msg.getRid(), new PreprocessedTextData(reactions, text, spannableString));
 
